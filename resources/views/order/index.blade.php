@@ -4,121 +4,102 @@
 
 @section('content')
 <section class="bg-[#fdfaf5] min-h-screen py-12">
-    <div class="container mx-auto px-6 md:px-16 lg:px-24 xl:px-32">
+    <div class="container mx-auto px-6 max-w-6xl">
         
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-            <div>
-                <h1 class="text-4xl font-black text-[#4A3428] tracking-tighter">Pesanan Saya</h1>
-                <p class="text-[#4A3428]/50 font-medium">Pantau semua pesanan fashion Anda di sini.</p>
-            </div>
+        <div class="mb-12">
+            <h1 class="text-4xl font-black text-[#4A3428] tracking-tighter">Pesanan Saya</h1>
+            <p class="text-[#4A3428]/50 font-medium">Pantau semua pesanan fashion Anda di sini.</p>
         </div>
 
-     
-        <div class="grid grid-cols-1 gap-6">
+        <div class="grid grid-cols-1 gap-8">
             @foreach($orders as $order)
-            <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-[#D9B382]/20 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                <div class="flex flex-col lg:flex-row justify-between gap-8">
-                    <div class="flex gap-6 lg:w-1/3">
-                        <div class="w-24 h-32 flex-shrink-0 rounded-2xl overflow-hidden bg-[#fdfaf5] border border-[#D9B382]/10">
+            <div class="bg-white rounded-[2.5rem] p-6 md:p-8 border border-[#D9B382]/20 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden relative">
+                
+                <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-stretch">
+                    
+                    <div class="flex gap-6 w-full lg:w-1/3">
+                        <div class="w-28 h-36 flex-shrink-0 rounded-2xl overflow-hidden bg-[#fdfaf5] border border-[#D9B382]/10">
                             <img src="{{ asset('images/' . $order->gambar) }}"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         </div>
-                        <div class="space-y-1">
-                            <span class="text-[10px] font-black text-[#D9B382] uppercase tracking-[0.2em]">
+                        <div class="flex flex-col justify-center">
+                            <span class="text-[10px] font-black text-[#D9B382] uppercase tracking-[0.2em] mb-1">
                                 Pesanan #{{ $order->id + 1000 }}
                             </span>
-                            <h3 class="text-xl font-black text-[#4A3428] leading-tight">
+                            <h3 class="text-xl font-black text-[#4A3428] leading-tight mb-2">
                                 {{ $order->nama_produk }}
                             </h3>
-                            <div class="flex items-center gap-2 pt-2">
+                            <div class="flex items-center gap-2">
                                 <span class="px-3 py-1 bg-[#4A3428] text-[#D9B382] text-[10px] font-bold rounded-lg uppercase italic">
                                     Size {{ $order->ukuran }}
                                 </span>
                                 <span class="text-sm font-bold text-[#4A3428]/40">
-                                    {{ $order->jumlah }}
+                                    {{ $order->jumlah }} Pcs
                                 </span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="lg:w-1/3 grid grid-cols-2 lg:grid-cols-1 gap-4 py-6 lg:py-0 border-y lg:border-y-0 lg:border-x border-[#D9B382]/10 lg:px-8">
-                        <div>
-                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Pemesan</p>
+                    <div class="w-full lg:w-1/3 flex flex-col justify-center lg:border-l lg:border-[#D9B382]/20 lg:pl-8 py-4 lg:py-0">
+                        <div class="mb-4">
+                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Penerima</p>
                             <p class="text-[#4A3428] font-bold">{{ $order->nama_pemesan }}</p>
                             <p class="text-[#4A3428]/50 text-xs">{{ $order->no_hp }}</p>
                         </div>
                         <div>
-                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Alamat</p>
-                            <p class="text-[#4A3428] text-sm font-medium line-clamp-2">
+                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Alamat Tujuan</p>
+                            <p class="text-[#4A3428] text-sm font-medium leading-relaxed">
                                 {{ $order->alamat }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="lg:w-1/4 flex flex-col justify-between items-end gap-4">
+                    <div class="w-full lg:w-1/3 flex flex-col justify-between items-end bg-[#fdfaf5]/50 lg:bg-transparent p-4 lg:p-0 rounded-2xl">
                         <div class="text-right">
-                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Total Bayar</p>
-                            <p class="text-2xl font-black text-[#4A3428]">
+                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Total Pembayaran</p>
+                            <p class="text-3xl font-black text-[#4A3428]">
                                 Rp {{ number_format($order->total_harga, 0, ',', '.') }}
                             </p>
                         </div>
-                       <div class="flex items-center gap-3">
-                            <div class="flex flex-col items-end">
-                                <span class="text-[9px] font-black uppercase tracking-tighter text-gray-400">
-                                    Status
-                                </span>
 
-                                <span class="text-sm font-black
+                        <div class="flex flex-col items-end gap-1 mt-4">
+                            <span class="text-[9px] font-black uppercase tracking-tighter text-gray-400">Status & Metode Pembayaran</span>
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm font-black uppercase italic
                                     @if($order->status == 'pending') text-red-500
                                     @elseif($order->status == 'proses') text-amber-500
                                     @elseif($order->status == 'selesai') text-green-600
                                     @endif">
-                                    {{ ($order->status) }}
+                                    {{ $order->status }}
                                 </span>
-                            </div>
-                        </div>
-
-
-                        <div class="flex flex-col items-end">
-                            <span class="text-[9px] font-black uppercase tracking-tighter text-gray-400">
-                                Metode Bayar
-                            </span>
-
-                            <span class="text-sm font-black text-[#4A3428] uppercase">
-                                {{ $order->metode_pembayaran }}
-                            </span>
-                        </div>
-
-
-                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span class="text-xs font-bold text-white bg-[#4A3428] px-2 py-0.5 rounded">
+                                    {{ $order->metode_pembayaran }}
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                @if($order->catatan)
-                <div class="mt-6 pt-4 border-t border-dashed border-[#D9B382]/30">
-                    <p class="text-xs italic text-[#4A3428]/60 uppercase tracking-widest">
-                        <span class="font-black not-italic text-[#D9B382]">Catatan:</span>
-                        "{{ $order->catatan }}"
-                    </p>
+                <div class="mt-8 pt-6 border-t border-dashed border-[#D9B382]/30 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="w-full md:w-2/3">
+                        @if($order->catatan)
+                        <p class="text-xs italic text-[#4A3428]/60 uppercase tracking-widest">
+                            <span class="font-black not-italic text-[#D9B382]">Catatan:</span>
+                            "{{ $order->catatan }}"
+                        </p>
+                        @endif
+                    </div>
+                    <div class="w-full md:w-auto">
+                        <a href="{{ route('orders.receipt', $order->id) }}"
+                        class="block text-center px-8 py-3 bg-[#D9B382] text-[#4A3428] font-black text-xs uppercase tracking-widest rounded-xl hover:bg-[#4A3428] hover:text-[#D9B382] transition-all duration-300 shadow-md hover:shadow-lg">
+                            Lihat Struk
+                        </a>
+                    </div>
                 </div>
-                @endif
 
-                <div class="mt-4 text-right">
-                    <a href="{{ route('orders.receipt', $order->id) }}"
-                    class="px-5 py-2 bg-[#D9B382] text-[#4A3428] font-bold rounded-2xl hover:bg-[#C9A770] transition-all">
-                        Lihat Struk
-                    </a>
-                </div>
             </div>
             @endforeach
         </div>
-
     </div>
 </section>
 @endsection
