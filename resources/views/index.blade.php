@@ -74,14 +74,31 @@
     <section id="koleksi" class="py-16 md:py-24 bg-[#F3E5D8]">
         <div class="container mx-auto px-6 md:px-16 lg:px-24 xl:px-32">
             <div class="mb-10 md:mb-12 flex justify-center lg:justify-end">
-                <form action="{{ route('home') }}" method="GET" class="flex w-full max-w-md gap-2">
-                    <input type="text" name="keyword" placeholder="Cari produk..." 
-                        value="{{ request('keyword') }}"
-                        class="flex-1 px-5 py-4 rounded-2xl border-none bg-white focus:ring-2 focus:ring-[#D9B382] font-medium text-[#4A3428] placeholder:text-gray-400 shadow-sm">
-                    <button type="submit" class="p-4 bg-[#4A3428] text-[#D9B382] font-bold rounded-2xl hover:bg-[#3D2B21] transition-all shadow-lg active:scale-95">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    </button>
-                </form>
+                <form action="{{ route('home') }}" method="GET" class="flex w-full max-w-xl gap-2">
+
+            <select name="kategori"
+                class="px-4 py-4 rounded-2xl bg-white font-medium text-[#4A3428] shadow-sm
+                    focus:ring-2 focus:ring-[#D9B382]">
+                <option value="">Semua Kategori</option>
+                <option value="jaket" {{ request('kategori') == 'jaket' ? 'selected' : '' }}>Jaket</option>
+                <option value="kaos" {{ request('kategori') == 'kaos' ? 'selected' : '' }}>Kaos</option>
+                <option value="hoodie" {{ request('kategori') == 'hoodie' ? 'selected' : '' }}>Hoodie</option>
+                <option value="kemeja" {{ request('kategori') == 'kemeja' ? 'selected' : '' }}>Kemeja</option>
+            </select>
+
+            <input type="text" name="keyword" placeholder="Cari produk..."
+                value="{{ request('keyword') }}"
+                class="flex-1 px-5 py-4 rounded-2xl border-none bg-white
+                    focus:ring-2 focus:ring-[#D9B382] font-medium text-[#4A3428]
+                    placeholder:text-gray-400 shadow-sm">
+
+            <button type="submit"
+                class="p-4 bg-[#4A3428] text-[#D9B382] font-bold rounded-2xl
+                    hover:bg-[#3D2B21] transition-all shadow-lg active:scale-95">
+                🔍
+            </button>
+        </form>
+
             </div>
 
             <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 gap-6 text-center md:text-left">
