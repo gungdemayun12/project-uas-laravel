@@ -18,6 +18,30 @@
         </a>
     </div>
 
+     <div class="bg-white p-4 rounded-[2rem] shadow-sm border border-gray-50">
+        <form action="{{ route('dashboard.pesanan') }}" method="GET" class="flex flex-col md:flex-row gap-3">
+            <div class="relative flex-1 group">
+                <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-[#4A3428]/30 group-focus-within:text-[#D9B382] transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+
+                <input type="text"
+                    name="keyword"
+                    value="{{ request('keyword') }}"
+                    placeholder="Cari nama pemesan..."
+                    class="w-full pl-12 pr-6 py-4 bg-[#F8F5F2] border-none rounded-2xl focus:ring-2 focus:ring-[#D9B382] transition-all text-[#4A3428] font-bold placeholder-[#4A3428]/30 shadow-inner">
+            </div>
+
+            <button type="submit"
+                    class="px-10 py-4 bg-[#D9B382] text-[#4A3428] rounded-2xl hover:bg-[#c4a175] font-black text-xs tracking-widest uppercase transition-all shadow-lg shadow-[#D9B382]/20">
+                CARI PESANAN
+            </button>
+        </form>
+    </div>
+
     @if(count($orders) > 0)
     <div class="bg-white rounded-[2.5rem] shadow-2xl shadow-black/[0.03] border border-white overflow-hidden">
         <div class="overflow-x-auto">
@@ -77,11 +101,11 @@
                         </td>
                         <td class="py-6 px-6">
                             <div class="flex justify-center gap-3">
-                                <a href="{{ route('orders.receipt', $order->id) }}"
-                                   target="_blank"
-                                   class="p-3 bg-white border border-gray-100 text-[#4A3428] rounded-xl hover:bg-[#4A3428] hover:text-[#D9B382] transition-all shadow-sm hover:shadow-md group/btn">
-                                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                </a>
+                                    <a href="{{ route('orders.receipt', $order->id) }}"
+                                    target="_blank"
+                                    class="p-3 bg-white border border-gray-100 text-[#4A3428] rounded-xl hover:bg-[#4A3428] hover:text-[#D9B382] transition-all shadow-sm hover:shadow-md group/btn">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                    </a>
 
                                 <a href="{{ route('dashboard.pesanan.edit', $order->id) }}"
                                    class="p-3 bg-white border border-gray-100 text-[#4A3428] rounded-xl hover:bg-[#D9B382] hover:text-[#4A3428] transition-all shadow-sm hover:shadow-md group/btn">

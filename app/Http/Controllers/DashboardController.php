@@ -72,7 +72,7 @@ class DashboardController extends Controller
 
     
     // UNTUK CRUD PESANAN
-    public function pesanan() {
+       public function pesanan(Request $request) {
         $orders = DB::table('orders')
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->select(
@@ -81,10 +81,12 @@ class DashboardController extends Controller
                 'products.harga as harga_satuan',
                 DB::raw('orders.jumlah * products.harga as total_harga')
             )
-            ->get();
+             ->where('nama_pemesan', 'LIKE', '%'. $request->keyword. '%')
+            ->paginate(5);
 
         return view('admin.pesanan', compact('orders'));
     }
+
 
   
 
