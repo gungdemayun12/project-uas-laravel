@@ -70,18 +70,29 @@
                             <svg class="w-4 h-4 text-[#D9B382]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
 
-                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-2xl py-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 border border-[#D9B382]/20">
-                            <a href="/orders" class="block px-4 py-3 text-sm font-bold text-[#4A3428] hover:bg-[#fdfaf5] hover:text-[#D9B382]">
-                                📦 Pesanan Saya
-                            </a>
-                            <hr class="border-[#D9B382]/10 my-1">
-                            <form action="{{ route('customer.logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="w-full text-left block px-4 py-3 text-sm font-bold text-red-500 hover:bg-red-50">
-                                    🚪 Logout
-                                </button>
-                            </form>
-                        </div>
+                       <div class="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-2xl py-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 border border-[#D9B382]/20">
+    
+    <a href="{{ route('customer.profile') }}"
+       class="block px-4 py-3 text-sm font-bold text-[#4A3428] hover:bg-[#fdfaf5] hover:text-[#D9B382]">
+        👤 Profil Saya
+    </a>
+
+    <a href="/orders"
+       class="block px-4 py-3 text-sm font-bold text-[#4A3428] hover:bg-[#fdfaf5] hover:text-[#D9B382]">
+        📦 Pesanan Saya
+    </a>
+
+    <hr class="border-[#D9B382]/10 my-1">
+
+    <form action="{{ route('customer.logout') }}" method="POST">
+        @csrf
+        <button type="submit"
+                class="w-full text-left block px-4 py-3 text-sm font-bold text-red-500 hover:bg-red-50">
+            🚪 Logout
+        </button>
+    </form>
+</div>
+
                     </div>
                 @else
                     <a href="{{ url('/customer/login') }}" class="px-8 py-2.5 bg-[#D9B382] text-[#4A3428] font-bold rounded-xl hover:bg-[#E7C697] transition-all text-sm">Login</a>
@@ -126,16 +137,26 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 gap-2">
-                        <a href="/orders" class="flex items-center gap-3 text-sm font-bold text-[#F3E5D8] p-3 hover:bg-[#4A3428] rounded-xl transition-all">
-                            <span>📦</span> Pesanan Saya
-                        </a>
-                        <form action="{{ route('customer.logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="w-full flex items-center gap-3 text-sm font-bold text-red-400 p-3 hover:bg-red-500/10 rounded-xl transition-all">
-                                <span>🚪</span> Keluar Sesi
-                            </button>
-                        </form>
-                    </div>
+
+    <a href="{{ route('customer.profile') }}"
+       class="flex items-center gap-3 text-sm font-bold text-[#F3E5D8] p-3 hover:bg-[#4A3428] rounded-xl transition-all">
+        <span>👤</span> Profil Saya
+    </a>
+
+    <a href="/orders"
+       class="flex items-center gap-3 text-sm font-bold text-[#F3E5D8] p-3 hover:bg-[#4A3428] rounded-xl transition-all">
+        <span>📦</span> Pesanan Saya
+    </a>
+
+    <form action="{{ route('customer.logout') }}" method="POST">
+        @csrf
+        <button type="submit"
+                class="w-full flex items-center gap-3 text-sm font-bold text-red-400 p-3 hover:bg-red-500/10 rounded-xl transition-all">
+            <span>🚪</span> Keluar Sesi
+        </button>
+    </form>
+</div>
+
                 </div>
             </div>
             @else

@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CustomerProfilController;
 
 
 
@@ -24,6 +25,11 @@ Route::get('/produk/{id}', [ProductController::class, 'show'])->name('produk.sho
 Route::get('/pesan/create/{id}', [OrderController::class, 'create'])->name('order.create');
 Route::post('/pesan/store', [OrderController::class, 'store'])->name('order.store');
 Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+
+// UNTUK LIHAT DAN EDIT DATA DIRI
+Route::get('/customer/profile', [CustomerProfilController::class, 'index'])->name('customer.profile');
+Route::get('/customer/profile/edit', [CustomerProfilController::class, 'edit'])->name('customer.profile.edit');
+Route::put('/customer/profile/update/{id}', [CustomerProfilController::class, 'memberUpdate'])->name('customer.profile.update');
 
 
 //UNTUK LOGIN DAN REGISTER PELANGGAN
